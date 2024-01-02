@@ -1,0 +1,15 @@
+name: Debug
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  ubuntu-latest:
+    runs-on: ubuntu-latest
+    steps:
+    - name: System info
+      run: lscpu; uname -a; zgrep -E 'IA32|X32|ABI' /proc/config.gz || grep -E 'IA32|X32|ABI' "/boot/config-$(uname -r)"
+  ubuntu-2004:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: System info
+      run: lscpu; uname -a; zgrep -E 'IA32|X32|ABI' /proc/config.gz || grep -E 'IA32|X32|ABI' "/boot/config-$(uname -r)"
